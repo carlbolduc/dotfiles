@@ -19,36 +19,36 @@
 (scroll-bar-mode -1)
 (setq visible-bell 1)
 (use-package dracula-theme
-             :ensure t
-             :config
-             (load-theme 'dracula t))
+  :ensure t
+  :config
+  (load-theme 'dracula t))
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
 (use-package flycheck
-             :ensure t
-             :config
-             (global-flycheck-mode))
+  :ensure t
+  :config
+  (global-flycheck-mode))
 
 (use-package counsel
-             ;; ivy and swiper will be installed as dependencies
-             :ensure t
-             :config
-             (ivy-mode 1)
-             (global-set-key (kbd "C-s") 'swiper))
+  ;; ivy and swiper will be installed as dependencies
+  :ensure t
+  :config
+  (ivy-mode 1)
+  (global-set-key (kbd "C-s") 'swiper))
 
 (use-package projectile
-             :ensure t
-             :config
-             (projectile-mode +1)
-             (setq projectile-completion-system 'ivy)
-             (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  :ensure t
+  :config
+  (projectile-mode +1)
+  (setq projectile-completion-system 'ivy)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (use-package company
-             :ensure t
-             :config
-             (add-hook 'after-init-hook 'global-company-mode))
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package magit
   :ensure t)
@@ -56,23 +56,25 @@
 
 ;; Python
 (use-package anaconda-mode
-             :ensure t
-             :config
-             (add-hook 'python-mode-hook 'anaconda-mode))
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode))
 (use-package company-anaconda
-             :ensure t
-             :config
-             (eval-after-load "company"
-               '(add-to-list 'company-backends 'company-anaconda)))
+  :ensure t
+  :config
+  (eval-after-load "company"
+    '(add-to-list 'company-backends 'company-anaconda)))
+(use-package py-yapf
+  :ensure t)
 
 ;; JavaScript
 (use-package tide
-             :ensure t
-             ;; not sure if we need all this since I'll be coding in JS
-             :after (typescript-mode company flycheck)
-             :hook ((typescript-mode . tide-setup)
-                    (typescript-mode . tide-hl-identifier-mode)
-                    (before-save . tide-format-before-save)))
+  :ensure t
+  ;; not sure if we need all this since I'll be coding in JS
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
@@ -82,11 +84,11 @@
   (tide-hl-identifier-mode +1)
   (company-mode +1))
 (use-package js2-mode
-             :ensure t
-             :config
-             (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-             (setq-default js2-basic-offset 2)
-             (add-hook 'js2-mode-hook #'setup-tide-mode))
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (setq-default js2-basic-offset 2)
+  (add-hook 'js2-mode-hook #'setup-tide-mode))
 
 ;; json
 (add-hook 'json-mode-hook
@@ -96,14 +98,14 @@
 
 ;; Web
 (use-package web-mode
-             :ensure t
-             :config
-             (require 'web-mode)
-             (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-             (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-             (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-             (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-             (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
+  :ensure t
+  :config
+  (require 'web-mode)
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
